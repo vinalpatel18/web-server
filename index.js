@@ -1,18 +1,8 @@
 var express =require('express');
 var app = express();
-var PORT=3000;
+var PORT = process.env.PORT || 3000;
 
-var middleware = {
-	requireAuthentication: function (req,res,next) {
-		console.log('private route it');
-		next();	
-	},
-	logger: function(req,res,next){
-		var date = new Date().toString();
-		console.log('Request on '+date+' with method '+req.method+' URL: '+req.originalUrl);
-		next();
-	}
-};
+var middleware = require('./middleware.js');
 
 app.use(middleware.logger);
 
@@ -23,7 +13,7 @@ app.get('/about',middleware.logger,function (req,res) {
 	// body...
 })
 
-app.post('/home',middleware.logger ,function (req,res) {
+app.get('/home',middleware.logger ,function (req,res) {
 	res.send('home page!');
 	// body...
 })
