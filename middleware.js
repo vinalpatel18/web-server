@@ -1,5 +1,3 @@
-
-
 var middleware = {
 	requireAuthentication: function (req,res,next) {
 		console.log('private route it');

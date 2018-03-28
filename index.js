@@ -18,8 +18,6 @@ app.get('/home',middleware.logger ,function (req,res) {
 	// body...
 })
 
-
-
 app.listen(PORT,function () {
 	console.log('Express server started on '+PORT);
 	// body...
